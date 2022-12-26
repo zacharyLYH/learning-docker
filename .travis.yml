@@ -1,0 +1,9 @@
+sudo: required
+services:
+  - docker 
+language: generic 
+before_install:
+  - docker build -t zacharylyh/learning-docker -f Dockerfile.dev . 
+
+script:
+  - docker run -e CI=true zacharylyh/learning-docker npm run test
